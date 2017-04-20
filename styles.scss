@@ -1,0 +1,108 @@
+.image-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 99999;
+
+  .gallery {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    .gallery-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: margin-left 0.5s;
+
+      &.moving {
+        transition: margin-left 0s;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+
+      @media (min-width: 426px) { max-width: 80%; max-height: 80%;}
+
+      &.active {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .indicators {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 0 40px;
+
+
+    svg {
+      margin: 0 5px;
+      circle { cursor: pointer; }
+    }
+  }
+
+  .icon-close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 36px;
+  }
+
+  .controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .touchpad {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .icon-left, .icon-right {
+      color: white;
+      cursor: pointer;
+      margin: 15px;
+      z-index: 1;
+      font-size: 36px;
+    }
+
+    // Firefox specific CSS
+    @-moz-document url-prefix() {
+      .icon-left, .icon-right {
+        position: absolute;
+        top: 45%;
+      }
+
+      .icon-right {
+        right: 0;
+      }
+    }
+  }
+}
